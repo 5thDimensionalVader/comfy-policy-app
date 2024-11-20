@@ -7,7 +7,6 @@
 
     <title>Login</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
@@ -19,7 +18,7 @@
         <div class="max-w-md w-full space-y-8 p-8 bg-slate-200 rounded-lg shadow">
             <div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                    Sign in to your account
+                    Login
                 </h2>
             </div>
             <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
