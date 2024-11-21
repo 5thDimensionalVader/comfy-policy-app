@@ -76,6 +76,10 @@
                                     {{ $policy->end_date->format('M d, Y') }}
                                 </td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                    <a href="{{ route('policies.show', $policy) }}"
+                                        class="text-indigo-600 hover:text-indigo-900 mr-4">
+                                        View
+                                    </a>
                                     <a href="{{ route('policies.edit', $policy) }}"
                                         class="text-indigo-600 hover:text-indigo-900 mr-4">
                                         Edit

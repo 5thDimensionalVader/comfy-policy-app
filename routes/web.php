@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/policies', [PolicyController::class, 'index'])->name('policies');
+    Route::get('/policies/view/{id}', [PolicyController::class, 'show'])->name('policies.show');
     Route::get('/policies/create', [PolicyController::class, 'create'])->name('policies.create');
     Route::get('/policies/{id}/edit', [PolicyController::class, 'edit'])->name('policies.edit');
 

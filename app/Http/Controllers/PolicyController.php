@@ -13,6 +13,12 @@ class PolicyController extends Controller
         return view('policies.index', compact('policies'));
     }
 
+    public function show($id)
+    {
+        $policy = Policy::where('id', $id)->first();
+        return view('policies.view', compact('policy'));
+    }
+
     public function create()
     {
         return view('policies.create');
