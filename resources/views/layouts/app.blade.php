@@ -37,8 +37,8 @@
     </nav>
     <div class="flex min-h-[calc(100vh-64px)]">
         <aside class="w-64 bg-gray-800">
-            <nav class="">
-                <a href="{{ route('dashboard') }}" 
+            <nav>
+                <a href="{{ route('dashboard') }}"
                    class="flex items-center px-6 py-3 hover:bg-gray-700 {{ request()->routeIs('dashboard') ? 'bg-gray-700' : '' }}">
                     Dashboard
                 </a>

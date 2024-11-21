@@ -16,9 +16,16 @@ Route::group(['middleware' => 'auth'], function () {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
     Route::get('/policies', [PolicyController::class, 'index'])->name('policies');
     Route::get('/policies/create', [PolicyController::class, 'create'])->name('policies.create');
+    Route::get('/policies/{id}/edit', [PolicyController::class, 'edit'])->name('policies.edit');
+
     Route::post('/policies', [PolicyController::class, 'store'])->name('policies.store');
 
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::put('/policies/{id}', [PolicyController::class, 'update'])->name('policies.update');
+
+    Route::delete('/policies/{id}', [PolicyController::class, 'destroy'])->name('policies.destroy');
 });
