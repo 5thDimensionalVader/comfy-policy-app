@@ -84,6 +84,7 @@
                                         class="text-indigo-600 hover:text-indigo-900 mr-4">
                                         Edit
                                     </a>
+                                    @if(auth()->user()->isAdmin())
                                     <form action="{{ route('policies.destroy', $policy) }}"
                                         method="POST"
                                         class="inline-block"
@@ -95,6 +96,7 @@
                                             Delete
                                         </button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             @empty
