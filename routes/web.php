@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Models\Policy;
+use Carbon\Carbon;
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -14,7 +16,10 @@ Route::post('/register', [AuthController::class, 'create'])->name('register');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
-        return view('dashboard');
+        $policies_active_count = Policy::where('status', 'Active')->count();
+        $policies_expiring_30 = Policy::where('status', 'Active')->where('end_date', '>=', Carbon::now()->addDays(30))->count();
+
+        return view('dashboard', compact('policies_active_count', 'policies_expiring_30'));
     })->name('dashboard');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
