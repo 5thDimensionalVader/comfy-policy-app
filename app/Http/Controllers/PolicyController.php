@@ -7,9 +7,20 @@ use App\Models\Policy;
 
 class PolicyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $policies = Policy::latest()->paginate(10);
+        $query = Policy::query();
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('policy_number', 'LIKE', "%{$search}%")
+                  ->orWhere('customer_name', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $policies = $query->latest()->paginate(10);
+
         return view('policies.index', compact('policies'));
     }
 

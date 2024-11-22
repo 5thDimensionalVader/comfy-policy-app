@@ -8,6 +8,33 @@
         <h2 class="text-2xl font-semibold mb-4">Policies</h2>
         <a href="{{ route('policies.create') }}" class="text-blue-500 hover:underline">Create Policy</a>
     </div>
+
+    <div class="mt-6">
+        <form action="{{ route('policies') }}" method="GET" class="flex gap-4">
+            <div class="flex-1">
+                <label for="search" class="sr-only">Search</label>
+                <div class="relative">
+                    <input type="text"
+                        name="search"
+                        id="search"
+                        value="{{ request('search') }}"
+                        class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 text-black placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        placeholder="Search by policy number or customer name...">
+                </div>
+            </div>
+            <button type="submit"
+                class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Search
+            </button>
+            @if(request()->has('search'))
+            <a href="{{ route('policies') }}"
+                class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Clear
+            </a>
+            @endif
+        </form>
+    </div>
+
     <div class="mt-8 flex flex-col">
         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -113,7 +140,6 @@
         </div>
     </div>
 
-    <!-- Pagination -->
     <div class="mt-4">
         {{ $policies->links() }}
     </div>
